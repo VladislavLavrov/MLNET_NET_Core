@@ -1,7 +1,13 @@
+using Microsoft.Extensions.ML;
+using MLNET_Console_App;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddPredictionEnginePool<MLModel.ModelInput, MLModel.ModelOutput>()
+            .FromFile("MLModel.zip");
 
 var app = builder.Build();
 
